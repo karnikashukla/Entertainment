@@ -1,0 +1,3 @@
+package com.entertainment.utils.navigationutils
+
+interface SealedState
