@@ -8,7 +8,9 @@ import androidx.compose.material.*
 import androidx.navigation.compose.rememberNavController
 import com.entertainment.ui.components.BottomNavigationBar
 import com.entertainment.utils.navigationutils.NavigationGraph
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
