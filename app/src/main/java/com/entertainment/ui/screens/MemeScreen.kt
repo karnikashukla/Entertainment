@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
-// use api https://api.imgflip.com/get_memes
+// use api https://meme-api.herokuapp.com/gimme/10
 @Composable
 fun MemeScreen() {
     Column(

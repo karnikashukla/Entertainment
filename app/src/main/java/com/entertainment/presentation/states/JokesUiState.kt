@@ -1,6 +1,6 @@
 package com.entertainment.presentation.states
 
-import com.entertainment.JokeModel
+import com.entertainment.models.JokeModel
 
 data class JokesUiState(
     override val id: String = "",
