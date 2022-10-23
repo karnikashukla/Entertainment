@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.entertainment.presentation.viewmodels.JokesViewModel
 
-// use api https://v2.jokeapi.dev/joke/Any?amount=5
+// use api https://v2.jokeapi.dev/joke/Any?type=single&amount=5
 @Composable
 fun JokeScreen(
     // TODO to be moved to hilt viewmodel
