@@ -1,13 +1,26 @@
 package com.entertainment.ui.screens
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.entertainment.R
 import com.entertainment.presentation.viewmodels.JokesViewModel
 
 // use api https://v2.jokeapi.dev/joke/Any?type=single&amount=5
@@ -17,19 +30,41 @@ fun JokeScreen(
     jokesViewModel: JokesViewModel = JokesViewModel()
 ) {
     val screenState = jokesViewModel.state.collectAsState()
-    // TODO @ks to be moved to lazy column , and improve ui
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.TopStart)
     ) {
-        screenState.value.jokesList.forEach {
-            Spacer(modifier = Modifier.height(12.dp))
-            Card {
-                Column {
-                    Text(text = it.joke)
-                    Text(text = it.jokeCategory)
-                    Spacer(modifier = Modifier.height(12.dp))
+        items(screenState.value.jokesList) { joke ->
+            Card(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxSize(),
+                shape = RoundedCornerShape(8.dp),
+                elevation = 2.dp
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .padding(10.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_baseline_emoji_emotions_24),
+                            contentDescription = "",
+                            colorFilter = ColorFilter.tint(color = Color.Gray)
+                        )
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .padding(10.dp)
+                    ) {
+                        Text(text = joke.joke, style = TextStyle(fontSize = 20.sp))
+                        Text(text = joke.jokeCategory, style = TextStyle(fontSize = 18.sp))
+                    }
+
                 }
             }
         }
