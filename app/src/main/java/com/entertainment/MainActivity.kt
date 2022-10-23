@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.entertainment.ui.components.BottomNavigationBar
 import com.entertainment.utils.navigationutils.NavigationGraph
@@ -25,7 +28,9 @@ class MainActivity : ComponentActivity() {
                 },
                 bottomBar = { BottomNavigationBar(navController) }
             ) {
-                NavigationGraph(navController)
+                Box(modifier = Modifier.padding(it)) {
+                    NavigationGraph(navController)
+                }
             }
         }
     }
